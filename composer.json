@@ -1,0 +1,32 @@
+{
+    "name": "owncms/admin",
+    "description": "Admin module for Own CMS",
+    "authors": [
+        {
+            "name": "Damian Bialkowski",
+            "email": "damianbialkowski8@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Admin\\Providers\\AdminServiceProvider",
+                "Facuz\\Theme\\ThemeServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "require": {
+        "maatwebsite/laravel-sidebar": "^2.4",
+        "laravel/ui": "^3.0",
+        "facuz/laravel-themes": "^3.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Admin\\": "",
+            "src\\Sidebar\\": "src\\Sidebar\\"
+        }
+    }
+}
