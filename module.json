@@ -6,7 +6,8 @@
     "keywords": [],
     "priority": 1,
     "providers": [
-        "Modules\\Admin\\Providers\\AdminServiceProvider"
+        "Modules\\Admin\\Providers\\AdminServiceProvider",
+        "Modules\\Admin\\Providers\\RouteServiceProvider"
     ],
     "aliases": {},
     "files": [],
