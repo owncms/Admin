@@ -1,6 +1,8 @@
 {
     "name": "owncms/admin",
     "description": "Admin module for Own CMS",
+    "type": "owncms-module",
+    "license": "MIT",
     "authors": [
         {
             "name": "Damian Bialkowski",
