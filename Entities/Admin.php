@@ -40,6 +40,7 @@ class Admin extends AuthModel
 
     protected $appends = [
         'role',
+        'is_protected'
     ];
 
     public array $searchableColumns = [
@@ -53,5 +54,10 @@ class Admin extends AuthModel
         if (!empty($password)) {
             $this->attributes['password'] = \Hash::make($password);
         }
+    }
+
+    public function getIsProtectedAttribute()
+    {
+        return $this->id == 1;
     }
 }

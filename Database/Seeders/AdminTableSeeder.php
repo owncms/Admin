@@ -4,7 +4,8 @@ namespace Modules\Admin\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
+use Modules\Admin\Entities\Admin;
+use Modules\Admin\Entities\Role;
 
 class AdminTableSeeder extends Seeder
 {
@@ -16,13 +17,28 @@ class AdminTableSeeder extends Seeder
     public function run()
     {
 //        Model::unguard();
-        DB::table('admins')->insert([
-            'name' => 'admin',
-            'email' => 'admin@admin.com',
-            'password' => bcrypt('admin'),
-            'active' => 1,
-            'updated_by' => 1,
-            'created_by' => 1,
-        ]);
+        $adminRole = Role::firstOrCreate(
+            [
+                'name' => 'admin',
+                'title' => 'Administrator',
+            ]
+        );
+        if (!$adminRole->wasRecentlyCreated) {
+            Bouncer::allow($adminRole->name)->everything();
+        }
+        $admin = Admin::where('email', 'admin@admin.admin')->first();
+        if (!$admin) {
+            $admin = Admin::create(
+                [
+                    'name' => 'admin',
+                    'login' => 'admin',
+                    'email' => 'admin@admin.admin',
+                    'password' => 'admin',
+                    'active' => 1
+                ]
+            );
+            Bouncer::allow($admin)->everything();
+            $admin->assign($adminRole->name);
+        }
     }
 }
