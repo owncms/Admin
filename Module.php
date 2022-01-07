@@ -18,6 +18,28 @@ class Module extends BaseModule
     public function install()
     {
         Artisan::call('module:migrate Admin');
-
+        $adminRole = Role::firstOrCreate(
+            [
+                'name' => 'admin',
+                'title' => 'Administrator',
+            ]
+        );
+        if (!$adminRole->wasRecentlyCreated) {
+            Bouncer::allow($adminRole->name)->everything();
+        }
+        $admin = Admin::where('email', 'admin@admin.admin')->first();
+        if (!$admin) {
+            $admin = Admin::create(
+                [
+                    'name' => 'admin',
+                    'login' => 'admin',
+                    'email' => 'admin@admin.admin',
+                    'password' => 'admin',
+                    'active' => 1
+                ]
+            );
+            Bouncer::allow($admin)->everything();
+            $admin->assign($adminRole->name);
+        }
     }
 }

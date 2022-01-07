@@ -20,7 +20,7 @@ class SidebarExtender extends AbstractAdminSidebar
         if ($canUsers || $canRoles) {
             $menu->group($this->getModuleName(), function (Group $group) use ($canUsers, $canRoles) {
                 $group->item('Admin', function (Item $item) use ($canUsers, $canRoles) {
-                    $item->icon('fa fa-cog');
+                    $item->icon('fa fa-users');
 
                     if ($canUsers) {
                         $item->item('Users', function (Item $item) {
