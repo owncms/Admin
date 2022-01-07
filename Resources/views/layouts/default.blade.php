@@ -10,7 +10,7 @@
             @yield('admin::main')
         </div>
         <footer class="author">
-            <p>Copyright {{ date('Y') }} &copy; DCMS by @cms_author</p>
+            <p>Copyright {{ date('Y') }} &copy; OwnCMS by @cms_author</p>
         </footer>
     </div>
 </div>

@@ -10,6 +10,9 @@ if (!function_exists('admin')) {
 if (!function_exists('admin_route')) {
     function admin_route($route): string
     {
-        return route('admin.' . $route);
+//        if (\Route::has($route)) {
+            return route('admin.' . $route);
+//        }
+//        return false;
     }
 }
