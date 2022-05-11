@@ -14,22 +14,24 @@ class SidebarExtender extends AbstractAdminSidebar
 {
     public function extendWith(Menu $menu): object
     {
-        $canUsers = Bouncer::can('index', Admin::class);
-        $canRoles = Bouncer::can('index', Role::class);
+        $permissions = [
+            'canUsers' => Bouncer::can('index', Admin::class),
+            'canRoles' => Bouncer::can('index', Role::class),
+        ];
 
-        if ($canUsers || $canRoles) {
-            $menu->group($this->getModuleName(), function (Group $group) use ($canUsers, $canRoles) {
-                $group->item('Admin', function (Item $item) use ($canUsers, $canRoles) {
+        if ($this->hasAnyPermissions($permissions)) {
+            $menu->group($this->getModuleName(), function (Group $group) use ($permissions) {
+                $group->item('Admin', function (Item $item) use ($permissions) {
                     $item->icon('fa fa-users');
 
-                    if ($canUsers) {
-                        $item->item('Users', function (Item $item) {
+                    if ($permissions['canUsers']) {
+                        $item->item(trans('admin::sidebar.users'), function (Item $item) {
                             $item->route($this->adminRoute('admins.index'));
                             $item->icon('');
                         });
                     }
-                    if ($canRoles) {
-                        $item->item('Roles', function (Item $item) {
+                    if ($permissions['canRoles']) {
+                        $item->item(trans('admin::sidebar.roles'), function (Item $item) {
                             $item->route($this->adminRoute('roles.index'));
                             $item->icon('');
                         });
@@ -39,5 +41,4 @@ class SidebarExtender extends AbstractAdminSidebar
         }
         return $menu;
     }
-
 }
