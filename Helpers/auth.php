@@ -8,10 +8,10 @@ if (!function_exists('admin')) {
 }
 
 if (!function_exists('admin_route')) {
-    function admin_route($route): string
+    function admin_route($route, $params = []): string
     {
 //        if (\Route::has($route)) {
-            return route('admin.' . $route);
+            return route('admin.' . $route, $params);
 //        }
 //        return false;
     }
