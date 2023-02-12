@@ -38,8 +38,10 @@ class Module extends BaseModule
                     'active' => 1
                 ]
             );
-            Bouncer::allow($admin)->everything();
-            $admin->assign($adminRole->name);
+            if ($admin) {
+                Bouncer::allow($admin)->everything();
+                $admin->assign($adminRole->name);
+            }
         }
     }
 }
