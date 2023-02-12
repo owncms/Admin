@@ -718,6 +718,54 @@ footer.author p {
     color: #fff;
 }
 
+.file--left {
+    background-color: #f3f3f3;
+    padding: 20px;
+    border-radius: 5px 0 0 5px;
+    display: flex;
+    align-items: center;
+}
+
+.file--left.upload--file-btn {
+    cursor: pointer;
+}
+
+.file--preview {
+    margin: 0 2px;
+    background-color: #f3f3f3;
+    width: 100%;
+    max-width: 250px;
+    max-height: 250px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.file--preview>span {
+    margin-left: 5px;
+}
+
+.file--preview img {
+    width: 100%;
+}
+
+.file--remove {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 5px;
+    color: red;
+    cursor: pointer;
+    min-width: 30px;
+    width: 30px;
+    text-align: center;
+    transition: .5s all;
+}
+
+.file--remove:hover {
+    background-color: #f3f3f3;
+}
+
 @media (min-width: 576px) {
 
 }
