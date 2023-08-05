@@ -21,7 +21,7 @@
         }
     },
     "require": {
-        "laravel/ui": "^3.0",
+        "laravel/ui": "^4.0",
         "facuz/laravel-themes": "^3.2"
     },
     "autoload": {
