@@ -21,7 +21,6 @@
         }
     },
     "require": {
-        "maatwebsite/laravel-sidebar": "^2.4",
         "laravel/ui": "^3.0",
         "facuz/laravel-themes": "^3.2"
     },
