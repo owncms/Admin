@@ -2,19 +2,18 @@
     "name": "Admin",
     "alias": "admin",
     "description": "Admin panel module",
-    "type": "laravel-module",
     "version": "0.1",
-    "keywords": [],
     "priority": 1,
     "providers": [
-        "Modules\\Admin\\Providers\\AdminServiceProvider",
-        "Modules\\Admin\\Providers\\RouteServiceProvider"
+        "Modules\\Admin\\App\\Providers\\AdminServiceProvider",
+        "Modules\\Admin\\App\\Providers\\RouteServiceProvider",
+        "Modules\\Admin\\App\\Providers\\BouncerServiceProvider"
     ],
     "aliases": {},
     "files": [],
     "requires": [],
     "abilities": [
-        "Modules\\Admin\\Http\\Controllers\\Backend\\AdminController",
-        "Modules\\Admin\\Http\\Controllers\\Backend\\RoleController"
+        "Modules\\Admin\\App\\Http\\Controllers\\Backend\\AdminController",
+        "Modules\\Admin\\App\\Http\\Controllers\\Backend\\RoleController"
     ]
 }

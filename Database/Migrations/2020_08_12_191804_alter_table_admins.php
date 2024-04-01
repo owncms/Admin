@@ -13,11 +13,11 @@ class AlterTableAdmins extends Migration
      */
     public function up()
     {
-        if (Schema::hasTable('admins')) {
+        if (Schema::hasTable('admins') && !Schema::hasColumns('last_name', 'login', 'last_login_at')) {
             Schema::table('admins', function (Blueprint $table) {
                 $table->string('last_name')->after('id')->nullable();
                 $table->string('login')->after('name')->nullable();
-                $table->timestamp('last_login')->after('remember_token')->nullable();
+                $table->timestamp('last_login_at')->after('remember_token')->nullable();
             });
         }
     }
@@ -30,12 +30,10 @@ class AlterTableAdmins extends Migration
     public function down()
     {
         if (Schema::hasTable('admins') &&
-            Schema::hasColumns('admins', ['last_name', 'login', 'last_login'])
+            Schema::hasColumns('admins', ['last_name', 'login', 'last_login_at'])
         ) {
             Schema::table('admins', function (Blueprint $table) {
-                $table->dropColumn('last_name');
-                $table->dropColumn('login');
-                $table->dropColumn('last_login');
+                $table->dropColumn(['last_name', 'login', 'last_login_at']);
             });
         }
     }

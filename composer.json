@@ -12,7 +12,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Modules\\Admin\\Providers\\AdminServiceProvider",
+                "Modules\\Admin\\App\\Providers\\AdminServiceProvider",
+                "Modules\\Admin\\App\\Providers\\RouteServiceProvider",
+                "Modules\\Admin\\App\\Providers\\SidebarServiceProvider",
+                "Modules\\Admin\\App\\Providers\\BouncerServiceProvider",
                 "Facuz\\Theme\\ThemeServiceProvider"
             ],
             "aliases": {
@@ -27,6 +30,7 @@
     "autoload": {
         "psr-4": {
             "Modules\\Admin\\": "",
+            "Modules\\Admin\\App\\": "app/",
             "src\\Sidebar\\": "src\\Sidebar\\"
         }
     }
